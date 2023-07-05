@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlRigidbody : MonoBehaviour
+namespace Lessons
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ControlRigidbody : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField]private Rigidbody _rigidbody;
+        [SerializeField]private ControlRigidbodySettings _settings;
+        private void Update()
+        {
+            bool spaceKeyDown= Input.GetKeyDown(KeyCode.Space);
+            if(spaceKeyDown)
+            {
+                _rigidbody.AddForce(_settings.JumpForce,ForceMode.Impulse);
+            }
+        }
     }
 }
